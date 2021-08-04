@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-
+import authReducer from "./authReducer";
 
 const appReducer = combineReducers({
-    replaceMe: () => 'hi there'
+    auth: authReducer,
 });
 
 
