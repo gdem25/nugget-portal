@@ -1,0 +1,17 @@
+.ui.menu.menuColor {
+  background-color: #00d6ff;
+  margin: 0 2px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.ui.inverted.menu .active.item.main {
+  color: black !important ;
+  background-color: white;
+  border-radius: 1.547323rem;
+}
+
+.ui.inverted.menu .active.item.main:hover {
+  color: black !important;
+  background-color: white;
+}

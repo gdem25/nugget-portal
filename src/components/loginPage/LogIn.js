@@ -12,7 +12,7 @@ class LogIn extends Component {
     renderButton = () => {
         if(this.props.signInState) {
             return (
-                <Link to='/home'  className="ui white button" style={{ marginTop: "13rem" }}  >
+                <Link to='/Home'  className="ui white button" style={{ marginTop: "13rem" }}  >
                     go to home page
                 </Link>
             )

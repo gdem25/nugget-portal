@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers/appReducer';
 import reduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+import 'semantic-ui-css/semantic.min.css'
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import './css/index.css';

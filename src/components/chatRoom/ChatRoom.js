@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import requireAuth from '../authentication/requireAuth'
 import MenuBar from '../MenuBar'
-class Home extends Component {
 
-    render(){
+class ChatRoom extends Component {
+    render() {
         return(
             <div>
                 <MenuBar/>
@@ -12,4 +12,4 @@ class Home extends Component {
     }
 }
 
-export default requireAuth(Home)
+export default requireAuth(ChatRoom)
