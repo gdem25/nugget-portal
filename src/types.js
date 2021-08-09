@@ -1,3 +1,5 @@
 export const SIGN_IN = 'SIGN_IN'
 export const SIGN_OUT = 'SIGN_OUT'
 export const ACTIVE_MENU_ITEM = 'ACTIVE_MENU_ITEM'
+export const SELECT_MAJOR = 'SELECT_MAJOR'
+export const GET_REQUIRED_CLASSES = 'GET_REQUIRED_CLASSES'

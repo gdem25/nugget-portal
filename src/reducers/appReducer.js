@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import menuBarReducer from "./menuBarReducer";
+import classesReducer from "./classesReducer";
 const appReducer = combineReducers({
     auth: authReducer,
-    menuBar: menuBarReducer
+    menuBar: menuBarReducer,
+    classes : classesReducer
 });
 
 

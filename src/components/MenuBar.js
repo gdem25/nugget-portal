@@ -53,7 +53,7 @@ class MenuBar extends Component {
     }
   
     render() {
-      return <div>{this.renderMenu(this.props.activeItem)}</div>
+      return <div style={{ marginBottom: "14px" }} >{this.renderMenu(this.props.activeItem)}</div>
     }
 }
 
