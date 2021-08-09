@@ -8,6 +8,9 @@ import Home from './homePage/Home'
 import Recourse from './recourse/Recourse'
 import Requirements from './requirements/Requirements'
 import ChatRoom from './chatRoom/ChatRoom'
+import ClassEnrollment from './ClassEnrollment/ClassEnrollment'
+import GpaCalculator from './gpaCalculator/GpaCalculator'
+import Transcripts from './transcript/Transcripts'
 class App extends Component {
 
   renderRouter = () => {
@@ -21,6 +24,9 @@ class App extends Component {
           <Route path='/Recourse'  component={Recourse}  />
           <Route path='/Requirements' component={Requirements}  />
           <Route path='/Chat' component={ChatRoom}   />
+          <Route path='/ClassEnrollement' component={ClassEnrollment}   />
+          <Route path='/GpaCalculator' component={GpaCalculator}   />
+          <Route path='/Transcripts' component={Transcripts}   />
         </Switch>
       </Router>
     )

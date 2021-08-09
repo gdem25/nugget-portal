@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import requireAuth from '../authentication/requireAuth'
 import { getRequiredClasses } from '../../actions/classesAction'
 import MenuBar from '../MenuBar'
+import SideNav from '../SideNav'
 class Home extends Component {
 
     componentDidUpdate() {
@@ -17,6 +18,7 @@ class Home extends Component {
         return(
             <div>
                 <MenuBar/>
+                <SideNav/>
             </div>
         )
     }
