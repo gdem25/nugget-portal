@@ -25,7 +25,7 @@ function SideNav() {
             <ul className = "SideNavList">
             {SideNavData.map((val,key)=>{
                 return(
-                    <li key = {key} className = "row" >
+                    <li key = {key} className = "row-sidebar" >
                         <Link to = {val.link} style ={{color:'black'}} > {val.title} </Link>
                     </li>
                 )
