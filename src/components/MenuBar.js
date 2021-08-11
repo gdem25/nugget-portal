@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { setActiveMenuItem } from '../actions/menuBarAction'
 import '../css/menuBar.css'
 class MenuBar extends Component {
-    menuItems = ['Home','Recourse', 'Requirements', 'Chat' ]
+    menuItems = ['Home', 'Requirements', 'Chat', 'ClassSearch' ]
     handleItemClick = ((e,{name}) => this.props.setActiveMenuItem(name) )
     handleLogOutClick = () => {
       window.gapi.auth2.getAuthInstance().signOut()

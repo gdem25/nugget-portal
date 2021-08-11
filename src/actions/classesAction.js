@@ -9,3 +9,7 @@ export const getRequiredClasses = major => async dispatch => {
     })
     dispatch({ type: GET_REQUIRED_CLASSES, payload: response.data })
 }
+
+export const searchClass = (name, sectionid) => {
+    
+}

@@ -1,0 +1,25 @@
+.search-bar-border {
+  border-bottom: 1px solid #00d6ff;
+  border-top: 1px solid #00d6ff;
+  border-bottom-right-radius: 3rem;
+  border-top-right-radius: 3rem;
+  border-bottom-left-radius: 3rem;
+  border-top-left-radius: 3em;
+  border-top-width: 9px;
+  border-bottom-width: 2px;
+  height: 156px;
+}
+
+.search-box-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.ui.basic.button.my-blue {
+  box-shadow: 0 0 0 1px #00d6ff inset !important;
+  color: #00d6ff !important;
+  border-radius: 1.285714rem;
+}

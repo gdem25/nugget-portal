@@ -5,12 +5,13 @@ import GoogleAuth from './authentication/GoogleAuth'
 import ScrollToTop from './ScrollToTop'
 import LogIn from './loginPage/LogIn'
 import Home from './homePage/Home'
-import Recourse from './recourse/Recourse'
+//import Recourse from './recourse/Recourse'
 import Requirements from './requirements/Requirements'
 import ChatRoom from './chatRoom/ChatRoom'
 import ClassEnrollment from './ClassEnrollment/ClassEnrollment'
 import GpaCalculator from './gpaCalculator/GpaCalculator'
 import Transcripts from './transcript/Transcripts'
+import ClassSearch from './classSearch/ClassSearch'
 class App extends Component {
 
   renderRouter = () => {
@@ -21,12 +22,12 @@ class App extends Component {
         <Switch>
           <Route path='/' exact component={LogIn}  />
           <Route path='/Home'   component={Home}  />
-          <Route path='/Recourse'  component={Recourse}  />
           <Route path='/Requirements' component={Requirements}  />
           <Route path='/Chat' component={ChatRoom}   />
           <Route path='/ClassEnrollement' component={ClassEnrollment}   />
           <Route path='/GpaCalculator' component={GpaCalculator}   />
           <Route path='/Transcripts' component={Transcripts}   />
+          <Route path='/ClassSearch' component={ClassSearch}  />
         </Switch>
       </Router>
     )

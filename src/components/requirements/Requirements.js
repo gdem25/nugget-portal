@@ -8,7 +8,7 @@ class Requirements extends Component {
 
     render() {
         return(
-            <div>
+            <div >
                 <MenuBar />
                 <div className="ui container" >
                     <ClassList requiredClasses={this.props.requiredClasses}  />
