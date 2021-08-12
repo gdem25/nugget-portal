@@ -23,3 +23,7 @@
   color: #00d6ff !important;
   border-radius: 1.285714rem;
 }
+
+.ui.inverted.teal.table.mteal {
+  background-color: #00d6ff !important;
+}

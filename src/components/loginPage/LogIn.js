@@ -35,6 +35,7 @@ class LogIn extends Component {
                                 <Button as={Link} className="ui white button" to='/Home'
                                     style={{ marginLeft: "11px" }}
                                     onClick={this.handleSelectMajorButton}
+                                    
                                   >
                                     Select Major
                                 </Button>

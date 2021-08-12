@@ -4,7 +4,10 @@ class ClassList extends Component {
 
     renderClassInfo = () => {
         return this.props.requiredClasses.map((info,index) => {
-            return <ClassInfo  info={info} key={index} />
+            if(info.first) {
+                return <ClassInfo  info={info} key={index} />
+            }
+            return <div key={index} ></div>
         })
     }
 

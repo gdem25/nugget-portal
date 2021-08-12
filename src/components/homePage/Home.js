@@ -14,7 +14,6 @@ class Home extends Component {
     }
 
     render(){
-        console.log(this.props.requiredClasses)
         return(
             <div>
                 <MenuBar/>

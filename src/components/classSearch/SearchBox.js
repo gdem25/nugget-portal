@@ -18,12 +18,15 @@ class SearchBox extends Component {
         this.setState({ [name]: value })
     }
     onSubmit = () => {
-        console.log(this.state)
+        const info = this.state
+        this.props.searchClass(info.term,info.class,info.section)
+        this.props.searchTableCheckboxValue('')
+        this.props.setSearchTableCBDisabled(false)
+
     }
     render() {
-        console.log(this.state)
         return (
-            <div className="ui container" style={{ marginTop: '1rem' }}  >
+            <div className="ui container" style={{ marginTop: '1rem', marginBottom: '5rem' }}  >
                 <Form onSubmit={this.onSubmit} className="search-bar-border search-box-flex "
                     style={{ padding: "0 1.5rem", boxShadow: "rgb(6 165 195 / 84%) 0px 20px 30px -10px" }} 
                 >

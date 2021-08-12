@@ -2,10 +2,12 @@ import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import menuBarReducer from "./menuBarReducer";
 import classesReducer from "./classesReducer";
+import tablesReducer from "./tablesReducer"
 const appReducer = combineReducers({
     auth: authReducer,
     menuBar: menuBarReducer,
-    classes : classesReducer
+    classes : classesReducer,
+    tables : tablesReducer
 });
 
 

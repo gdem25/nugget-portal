@@ -1,5 +1,9 @@
 import ServerApi from '../api/ServerApi'
-import { GET_REQUIRED_CLASSES } from '../types'
+import { 
+     GET_REQUIRED_CLASSES,
+     GET_SEARCHED_CLASSES,
+     ADD_TO_SHOPPING_CART 
+    } from '../types'
 
 
 
@@ -10,6 +14,17 @@ export const getRequiredClasses = major => async dispatch => {
     dispatch({ type: GET_REQUIRED_CLASSES, payload: response.data })
 }
 
-export const searchClass = (name, sectionid) => {
-    
+export const searchClass = (term, name, sectionid) => {
+    const response = { term, name, sectionid }
+    return {
+        type: GET_SEARCHED_CLASSES,
+        payload: response
+    }
+}
+
+export const addToShoppingCart = (classid) => {
+    return {
+        type: ADD_TO_SHOPPING_CART,
+        payload: classid
+    }
 }
