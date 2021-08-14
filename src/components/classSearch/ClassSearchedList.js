@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Table, Checkbox, Form, Button } from 'semantic-ui-react'
+import { Table, Checkbox, Form, Button, Confirm } from 'semantic-ui-react'
 class ClassSearchedList extends Component {
+
+    state={ show: false }
 
 
     handleChange = ((event, data) => {
@@ -13,14 +15,20 @@ class ClassSearchedList extends Component {
         }
     } )
 
+    showConfirm = () => this.setState({ show: true })
+
+    handleConfirm = () => {
+        this.setState({ show: false })
+        this.props.searchTableCheckboxValue('')
+
+    }
+
     handleSubmit = () => {
         if(this.props.searchTableCBValue) {
             this.props.setSearchTableCBDisabled(true)
             this.props.addToShoppingCart(this.props.searchTableCBValue)
+            this.showConfirm()
         }
-        
-        this.props.searchTableCheckboxValue('')
-        
         
     }
 
@@ -89,6 +97,13 @@ class ClassSearchedList extends Component {
                     >
                         Go To Shopping Cart
                     </Button>
+                    <Confirm
+                        open={this.state.show}
+                        header= {`Class ${this.props.searchTableCBValue} Added To Shpping Cart`}
+                        content= {false} 
+                        cancelButton={false}
+                        onConfirm={this.handleConfirm}
+                    />
                 </div>
             )
         }else {

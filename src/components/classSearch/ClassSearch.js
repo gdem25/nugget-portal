@@ -27,7 +27,6 @@ class ClassSearch extends Component {
 
     
     render() {
-        console.log(this.props.shoppingCart)
         return (
             <div>
                 <MenuBar/>
@@ -55,7 +54,6 @@ const mapStateToProps = (state) => {
     return {
         requiredClasses : state.classes.requiredClasses,
         classesSearched: state.classes.classesSearched,
-        shoppingCart :  state.classes.shoppingCart,
         searchTableCBValue: state.tables.searchTableCBValue,
         searchTableCBDisabled: state.tables.searchTableCBDisabled
     }

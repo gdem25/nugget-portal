@@ -1,0 +1,16 @@
+.ui.inverted.menu .brown.active.item,
+.ui.inverted.brown.menu {
+  background-color: transparent;
+  border: 3px solid #00d5ff77;
+  border-radius: 1.547323rem;
+}
+
+.ui.inverted.brown.menu .active.item.bloom {
+  border-color: #00d5ff77 !important;
+  border-radius: 1.547323rem !important;
+  color: #00d6ff !important;
+}
+
+.ui.inverted.brown.menu .item.bloom {
+  color: black !important;
+}

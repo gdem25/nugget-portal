@@ -1,4 +1,8 @@
-import { SET_SEARCH_TABLE_CHECKBOX, SET_SEARCH_TABLE_CB_DISABLED } from '../types'
+import { 
+    SET_SEARCH_TABLE_CHECKBOX, 
+    SET_SEARCH_TABLE_CB_DISABLED,
+    SET_SHOP_CART_CB
+} from '../types'
 
 
 
@@ -12,6 +16,13 @@ export const  searchTableCheckboxValue = (value) => {
 export const setSearchTableCBDisabled = (value) => {
     return {
         type: SET_SEARCH_TABLE_CB_DISABLED,
+        payload: value
+    }
+}
+
+export const setShoppingCartCB = (value) => {
+    return {
+        type: SET_SHOP_CART_CB,
         payload: value
     }
 }

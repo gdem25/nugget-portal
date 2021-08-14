@@ -29,6 +29,7 @@ export default (state = INITIAL_STATE, action) => {
                     rate: EClass.rate,
                     classid: EClass.classid,
                     description: EClass.description,
+                    prereq: EClass.prereq,
                     term: term
                 }
             })
