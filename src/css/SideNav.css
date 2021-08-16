@@ -1,29 +1,6 @@
-.SideNav {
-  height: 100%;
-  width: 200px;
+.ui.inverted.menu .pink.active.item,
+.ui.inverted.pink.menu {
   background-color: #00abcc;
-  text-align: left;
-  text-indent: 15%;
-  padding: 16px;
-  position: fixed;
-  overflow: auto;
-}
-.SideNavList {
-  height: auto;
-  padding: 0;
-  width: 100%;
-}
-.row-sidebar {
-  display: block;
-  width: 100%;
-  height: 50px;
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-variant: normal;
-}
-.row-sidebar:hover {
-  cursor: pointer;
-  background-color: #97ddea;
+  border: 3px solid #00d5ff77;
+  border-radius: 1.547323rem;
 }

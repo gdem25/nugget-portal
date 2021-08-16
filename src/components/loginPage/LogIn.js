@@ -9,6 +9,8 @@ class LogIn extends Component {
 
     state= { selectedMajor: '' }
 
+
+
     handleLogIn = () => {
         window.gapi.auth2.getAuthInstance().signIn()
         
@@ -78,7 +80,8 @@ class LogIn extends Component {
 const mapStateToProps = (state) => {
     return {
       signInState : state.auth.isSignedIn,
-      studentLogInfo : state.auth.studentLogInfo
+      studentLogInfo : state.auth.studentLogInfo,
+      studentMajor : state.auth.studentMajor
     }
   }
 

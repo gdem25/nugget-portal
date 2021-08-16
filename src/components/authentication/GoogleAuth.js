@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { signIn, signOut } from '../../actions/authAction'
+import { signIn, signOut, ifMajorSelected } from '../../actions/authAction'
+import { getEnrolledClasses, getRequiredClasses } from '../../actions/classesAction'
+import history from '../../history'
 class GoogleAuth extends Component {
 
     componentDidMount() {
@@ -25,7 +27,18 @@ class GoogleAuth extends Component {
           const email = basicProfile.getEmail();
           const userid = basicProfile.getId();
           const image = basicProfile.getImageUrl();
-          this.props.signIn(name, email, userid, image)
+          this.props.signIn(name, email, userid, image).then( () => {
+            if( this.props.studentLogInfo  && this.props.studentLogInfo.major !== null) {
+              const major = this.props.studentLogInfo.major
+              this.props.ifMajorSelected(major)
+              this.props.getRequiredClasses(major)
+              console.log('hi')
+              history.push('/Home')
+            }
+          })
+          if(!this.props.enrolledClasses[0]) {
+            this.props.getEnrolledClasses(userid)
+          }
           
         } 
         else {
@@ -40,5 +53,19 @@ class GoogleAuth extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    enrolledClasses: state.classes.enrolledClasses,
+    studentLogInfo: state.auth.studentLogInfo
+  }
+}
 
-export default connect(null, { signIn, signOut })(GoogleAuth)
+
+export default connect(mapStateToProps,
+   { 
+     signIn, 
+     signOut, 
+     getEnrolledClasses, 
+     ifMajorSelected,
+     getRequiredClasses
+    })(GoogleAuth)

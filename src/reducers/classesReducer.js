@@ -3,13 +3,19 @@ import _ from 'lodash'
 import { 
     GET_REQUIRED_CLASSES, 
     GET_SEARCHED_CLASSES,
-    ADD_TO_SHOPPING_CART
+    ADD_TO_SHOPPING_CART,
+    ADD_CLASS,
+    GET_ENROLLED_CLASSES,
+    DROP_CLASS,
+    SWAP_CLASS
 } from '../types'
 
 const INITIAL_STATE = {
     requiredClasses: [],
     classesSearched: [],
-    shoppingCart: []
+    shoppingCart: [],
+    enrolledClasses: [],
+    error: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,6 +31,7 @@ export default (state = INITIAL_STATE, action) => {
                 return {
                     name: EClass.name,
                     section: EClass.section,
+                    sectionid: EClass.sectionid,
                     teacher: EClass.teacher,
                     rate: EClass.rate,
                     classid: EClass.classid,
@@ -38,6 +45,52 @@ export default (state = INITIAL_STATE, action) => {
             const classid = action.payload
             const chosen = _.filter(state.classesSearched, { classid } )
             return {...state, shoppingCart: [...state.shoppingCart, chosen[0]] }
+        case ADD_CLASS:
+                const newShCart = _.filter(state.shoppingCart, (each) => {
+                    return each.classid !== action.payload.classid
+                })
+                if(action.payload.error === 'class taken') {
+                    return {...state , error: action.payload.error, shoppingCart: newShCart}
+                }
+                else if (action.payload.error === 'Prereq Not Taken' ) {
+                    return { ...state , error: action.payload.error, shoppingCart: newShCart }
+                }
+                else if (action.payload.classid) {
+                    const clasid = action.payload.classid
+                    const clas = _.filter(state.shoppingCart, { classid: clasid })
+                    return {...state, 
+                        shoppingCart: newShCart, 
+                        enrolledClasses: [...state.enrolledClasses, clas[0]],
+                        error : ''
+                    }
+
+                }
+            return state
+        case GET_ENROLLED_CLASSES:
+            return {...state, enrolledClasses: action.payload }
+        case DROP_CLASS:
+            const clasid = action.payload.classid
+            const newClasSet = _.filter(state.enrolledClasses, EClass => {
+                return EClass.classid !== clasid
+            } )
+            return {...state, enrolledClasses: newClasSet }
+        case SWAP_CLASS:
+            const newSCart = _.filter(state.shoppingCart, each => {
+                return each.classid !== action.payload.classid
+            })
+            if(action.payload.error) {
+                return { ...state, shoppingCart: newSCart, error: action.payload.error }
+            }
+            else {
+                const classid = action.payload.classid
+                const clas = _.filter(state.shoppingCart, { classid } )
+                return {
+                    ...state,
+                    shoppingCart: newSCart,
+                    enrolledClasses: [ ...state.enrolledClasses,clas[0] ],
+                    error: ''
+                }
+            }
         default:
             return state
     }

@@ -1,7 +1,7 @@
 import React from 'react'
+import { Menu } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
-import "../css/SideNav.css"
-
+import  '../css/SideNav.css'
 
 const SideNavData = [
     {
@@ -18,21 +18,29 @@ const SideNavData = [
     }
 ]
 
+class SideNav extends React.Component {
 
-function SideNav() {
-    return (
-        <div className ="SideNav">
-            <ul className = "SideNavList">
-            {SideNavData.map((val,key)=>{
-                return(
-                    <li key = {key} className = "row-sidebar" >
-                        <Link to = {val.link} style ={{color:'black'}} > {val.title} </Link>
-                    </li>
-                )
-            })}
-            </ul>
-        </div>
-    )
+renderMenuItem = () => {
+    return SideNavData.map((item, index) => {
+        return(
+            <Menu.Item
+                key={index}
+                as={Link}
+                to={item.link}
+                name={item.title} 
+            />
+        )
+    })
+}
+
+
+    render() {
+        return(
+            <Menu fluid vertical inverted  color='pink'  tabular style={{ height: '100vh' }}  >
+                {this.renderMenuItem()}
+            </Menu>
+        )
+    }
 }
 
 export default SideNav;

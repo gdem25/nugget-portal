@@ -6,6 +6,7 @@ class ShoppingCart extends Component {
         const { setShoppingCartCB } = this.props
         if(checked) {
             setShoppingCartCB(value)
+            
         }
         else {
             setShoppingCartCB('')
@@ -23,6 +24,7 @@ class ShoppingCart extends Component {
                             value={EClass.classid}
                             onChange={this.handleCheckBoxValue}
                             checked={ getShoppingCartCB === EClass.classid }
+                            
                         />
                     </Table.Cell>
                     <Table.Cell>{EClass.name}</Table.Cell>
@@ -36,11 +38,10 @@ class ShoppingCart extends Component {
     }
 
     render() {
-        console.log(this.props.getShoppingCartCB)
         if(this.props.shoppingCart[0]) {
             return(
                 <div>
-                    <h1 style={{ textAlign: 'center' }} >Shopping Cart</h1>
+                    <h1 style={{ textAlign: 'center' }} >{this.props.tableName}</h1>
                     <Table striped color='teal' inverted  className='mteal'  >
                         <Table.Header>
                             <Table.Row>
@@ -62,7 +63,6 @@ class ShoppingCart extends Component {
         else {
             return(
                 <div>
-                    <h1 style={{ textAlign: 'center' }} >Shopping Cart</h1>
                 </div>
             )
         }
