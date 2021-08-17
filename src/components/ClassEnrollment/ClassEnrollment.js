@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 import { setShoppingCartCB, setEnrolledCB } from '../../actions/tablesAction'
-import { addClass, dropClass } from '../../actions/classesAction'
+import { addClass, dropClass, swapClass } from '../../actions/classesAction'
 import MenuBar from '../MenuBar'
 import SideFunctions from './SideFunctions'
 import ShoppingCart from './ShoppingCart'
@@ -25,6 +25,7 @@ class ClassEnrollment extends Component {
               addClass={this.props.addClass}
               error = {this.props.error}
               dropClass={this.props.dropClass}
+              swapClass={this.props.swapClass}
             />
           </Grid.Column>
           <Grid.Column width={12} >
@@ -63,5 +64,6 @@ export default connect(mapStateToProps,{
   setShoppingCartCB,
   addClass, 
   setEnrolledCB,
-  dropClass
+  dropClass,
+  swapClass
 })(requireAuth(ClassEnrollment))

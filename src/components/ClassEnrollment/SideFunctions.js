@@ -34,7 +34,20 @@ class SideFunctions extends Component {
             const userid = this.props.userid.userid
             this.props.dropClass(this.props.getEnrolledCB,userid)
         }
-        else if (name === 'SwapClass' ) {
+        else if (name === 'SwapClass' && this.props.getShoppingCartCB  ) {
+            const Eclass = _.find(this.props.shoppingCart, { classid: this.props.getShoppingCartCB })
+            if(Eclass) {
+                const classid = Eclass.classid
+                const userid = this.props.userid.userid
+                const sectionid = Eclass.sectionid
+                const term = Eclass.term
+                this.props.swapClass(classid, userid, sectionid, term)
+                    .then(() => {
+                        if(this.props.error) {
+                            this.setState({ show: true })
+                        }
+                    } )
+            }
             console.log('Swap Class')
         }
     }

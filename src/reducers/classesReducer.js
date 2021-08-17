@@ -83,11 +83,15 @@ export default (state = INITIAL_STATE, action) => {
             }
             else {
                 const classid = action.payload.classid
+                const newEnrClass = _.filter(state.enrolledClasses, each => {
+                    return each.sectionid !== action.payload.sectionid
+                } )
                 const clas = _.filter(state.shoppingCart, { classid } )
+                newEnrClass.push(clas[0])
                 return {
                     ...state,
                     shoppingCart: newSCart,
-                    enrolledClasses: [ ...state.enrolledClasses,clas[0] ],
+                    enrolledClasses: newEnrClass,
                     error: ''
                 }
             }
