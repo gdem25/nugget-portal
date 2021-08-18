@@ -48,7 +48,6 @@ class SideFunctions extends Component {
                         }
                     } )
             }
-            console.log('Swap Class')
         }
     }
 

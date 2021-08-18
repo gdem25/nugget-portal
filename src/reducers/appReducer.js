@@ -1,13 +1,17 @@
-import { combineReducers } from "redux";
-import authReducer from "./authReducer";
-import menuBarReducer from "./menuBarReducer";
-import classesReducer from "./classesReducer";
+import { combineReducers } from "redux"
+import authReducer from "./authReducer"
+import menuBarReducer from "./menuBarReducer"
+import classesReducer from "./classesReducer"
 import tablesReducer from "./tablesReducer"
+import chatReducer from "./chatReducer"
+import gpaReducer from './gpaReducer'
 const appReducer = combineReducers({
     auth: authReducer,
     menuBar: menuBarReducer,
     classes : classesReducer,
-    tables : tablesReducer
+    tables : tablesReducer,
+    chat: chatReducer,
+    gpa : gpaReducer
 });
 
 

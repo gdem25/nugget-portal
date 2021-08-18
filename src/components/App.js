@@ -8,6 +8,7 @@ import Home from './homePage/Home'
 //import Recourse from './recourse/Recourse'
 import Requirements from './requirements/Requirements'
 import ChatRooms from './chatRoom/ChatRooms'
+import ChatRoom from './chatRoom/ChatRoom'
 import ClassEnrollment from './classEnrollment/ClassEnrollment'
 import GpaCalculator from './gpaCalculator/GpaCalculator'
 import Transcripts from './transcript/Transcripts'
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path='/Home'   component={Home}  />
           <Route path='/Requirements' component={Requirements}  />
           <Route path='/Chat' component={ChatRooms}   />
+          <Route path='/ChatRoom/:id' component={ChatRoom}  />
           <Route path='/ClassEnrollement' component={ClassEnrollment}   />
           <Route path='/GpaCalculator' component={GpaCalculator}   />
           <Route path='/Transcripts' component={Transcripts}   />

@@ -11,7 +11,6 @@ import '../../css/classEnrollment.css'
 class ClassEnrollment extends Component {
 
   render() {
-    console.log(this.props.getEnrolledCB)
     return (
       <div>
         <MenuBar />

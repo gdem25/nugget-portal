@@ -1,25 +1,19 @@
 import React, { Component } from 'react'
-import { Card, Icon } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 class ClassInfo extends Component {
     render() {
         const { name, section, description } = this.props.info
         return (
             <div  >
-                <Card raised style={{ height: "inherit", width: "inherit", minHeight: "180px"}} >
+                <Card raised style={{ height: "inherit", width: "inherit", minHeight: "150px"}} >
                     <Card.Content>
                         <Card.Header className="centered"  >{name}</Card.Header>
                         <Card.Meta className="centered" >
                             <span >{section}</span>
                         </Card.Meta>
-                        <Card.Description>
+                        <Card.Description className="centered" >
                             <div>{description}</div>
                         </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                        <a href="/"  >
-                            <Icon name='user' />
-                            Add
-                        </a>
                     </Card.Content>
                 </Card>
             </div>
