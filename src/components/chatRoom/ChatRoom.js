@@ -53,7 +53,7 @@ class ChatRoom extends Component {
                     <div className="chat-room-position" >
                         <Form reply onSubmit={this.handleSubmit}  >
                             <TextArea maxLength='200' value={this.state.comment} onChange={this.handleChange} />
-                            <Button content='submit' basic color='blue'  fluid /> 
+                            <Button content='submit' basic color='blue' circular  fluid /> 
                         </Form>
                     </div>
                 </div>

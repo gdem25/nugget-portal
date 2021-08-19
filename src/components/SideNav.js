@@ -15,6 +15,10 @@ const SideNavData = [
     {
         title: "GPA Calculator",
         link: "/GpaCalculator"
+    },
+    {
+        title: "Administration",
+        link: "/Admin"
     }
 ]
 

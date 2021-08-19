@@ -23,8 +23,8 @@ class GpaInput extends Component {
        super(props)
        this.state = {
         courseName: '',
-        courseUnits: 0,
-        courseGradePoint: 0,
+        courseUnits: '',
+        courseGradePoint: '',
         units: [],
         gradePoints: [],
         courseNameList: [],
@@ -40,10 +40,12 @@ class GpaInput extends Component {
         const first = this.state.units;
         const second = this.state.gradePoints;
         const third  = this.state.courseNameList;
-        first.push(this.state.courseUnits);
-        second.push(this.state.courseGradePoint);
-        third.push(this.state.courseName);
-        this.setState({ courseName: '', courseUnits: 0, courseGradePoint: 0, units: first, gradePoints: second, courseNameList: third })
+        if( this.state.courseName && this.state.courseUnits && this.state.courseGradePoint ) {
+            first.push(this.state.courseUnits);
+            second.push(this.state.courseGradePoint);
+            third.push(this.state.courseName);
+            this.setState({ courseName: '', courseUnits: '', courseGradePoint: '', units: first, gradePoints: second, courseNameList: third })
+        }
        
     }
 

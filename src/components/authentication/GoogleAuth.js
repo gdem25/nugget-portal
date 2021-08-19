@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn, signOut, ifMajorSelected } from '../../actions/authAction'
 import { getEnrolledClasses, getRequiredClasses } from '../../actions/classesAction'
+import { getAdminRequired } from '../../actions/adminAction'
 import history from '../../history'
 class GoogleAuth extends Component {
 
@@ -38,6 +39,7 @@ class GoogleAuth extends Component {
           })
           if(!this.props.enrolledClasses[0]) {
             this.props.getEnrolledClasses(userid)
+            this.props.getAdminRequired(userid)
           }
           
         } 
@@ -67,5 +69,6 @@ export default connect(mapStateToProps,
      signOut, 
      getEnrolledClasses, 
      ifMajorSelected,
-     getRequiredClasses
+     getRequiredClasses,
+     getAdminRequired
     })(GoogleAuth)

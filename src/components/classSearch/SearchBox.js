@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Form, Button} from 'semantic-ui-react'
 import _ from 'lodash'
 const options = [
-    { key: 'F', text: 'Fall', value: 'F' },
-    { key: 'SP', text: 'Spring', value: 'SP' },
-    { key: 'SU', text: 'Summer', value: 'SU' },
+    { key: 'F', text: 'Fall', value: 'FALL21' },
+    { key: 'SP', text: 'Spring', value: 'SPRING22' },
+    { key: 'SU', text: 'Summer', value: 'SUMMER22' },
   ]
 class SearchBox extends Component {
     state={ term: '', class: '', section: '' }
@@ -22,6 +22,7 @@ class SearchBox extends Component {
         this.props.searchClass(info.term,info.class,info.section)
         this.props.searchTableCheckboxValue('')
         this.props.setSearchTableCBDisabled(false)
+        this.setState({ term: '', class: '', section: '' })
 
     }
     render() {
@@ -38,6 +39,7 @@ class SearchBox extends Component {
                         name = 'term'
                         required
                         onChange={this.handlechange}
+                        value={this.state.term}
                     />
                     <Form.Select
                         label='Class'
@@ -47,6 +49,7 @@ class SearchBox extends Component {
                         name = 'class'
                         required
                         onChange={this.handlechange}
+                        value={this.state.class}
                     />
                     <Form.Select
                         floating
@@ -57,6 +60,7 @@ class SearchBox extends Component {
                         search                        
                         required
                         onChange={this.handlechange}
+                        value={this.state.section}
                     />
                     <Button basic className="my-blue" type='submit'>Search</Button>
                 </Form>
