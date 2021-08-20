@@ -3,7 +3,8 @@ import {
     GET_ADMIN_REQUIRED,
     POST_TO_TRANSCRIPT, 
     POST_GRADING_LIST,
-    GET_TRANSCRIPT
+    GET_TRANSCRIPT,
+    GET_SEMESTER_TRANSCRIPT
 } from '../types'
 
 
@@ -40,4 +41,11 @@ export const getTranscript = userid => async dispatch => {
         headers: { userid }
     })
     dispatch({ type: GET_TRANSCRIPT, payload: response.data })
+}
+
+export const getSemesterTranscript = term => {
+    return{
+        type: GET_SEMESTER_TRANSCRIPT,
+        payload: term
+    }
 }

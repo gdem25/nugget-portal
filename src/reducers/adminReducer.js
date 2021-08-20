@@ -3,14 +3,16 @@ import {
     GET_ADMIN_REQUIRED, 
     POST_GRADING_LIST, 
     GET_TRANSCRIPT, 
-    POST_TO_TRANSCRIPT 
+    POST_TO_TRANSCRIPT,
+    GET_SEMESTER_TRANSCRIPT
 } from '../types'
 import _ from 'lodash'
 
 const INITIAL_STATE = {
     adminRequired: [],
     gradingList: [],
-    transcript: []
+    transcript: [],
+    semTranscript: []
 }
 
 
@@ -35,6 +37,11 @@ export default ( state=INITIAL_STATE, action ) => {
             return { ...state, transcript: action.payload }
         case POST_TO_TRANSCRIPT:
             return { ...state, transcript: [ ...state.transcript, action.payload ] }
+        case GET_SEMESTER_TRANSCRIPT:
+            const semester = _.filter( state.transcript ,each => {
+                return each.term === action.payload
+            })
+            return { ...state, semTranscript: semester }
         default:
             return state
     }
