@@ -36,7 +36,9 @@ export default ( state=INITIAL_STATE, action ) => {
         case GET_TRANSCRIPT:
             return { ...state, transcript: action.payload }
         case POST_TO_TRANSCRIPT:
-            return { ...state, transcript: [ ...state.transcript, action.payload ] }
+            return { ...state,
+                 transcript: [ ...state.transcript, action.payload ]
+                 }
         case GET_SEMESTER_TRANSCRIPT:
             const semester = _.filter( state.transcript ,each => {
                 return each.term === action.payload

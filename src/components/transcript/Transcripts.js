@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import _ from 'lodash'
 import { getTranscript, getSemesterTranscript } from '../../actions/adminAction'
 import { List, Segment, Dropdown, Button, Form } from 'semantic-ui-react'
+import MenuBar from '../MenuBar'
 import requireAuth from '../authentication/requireAuth'
 
 const termOptions = [
@@ -17,7 +17,7 @@ class Transcripts extends Component {
     state={ term: '' }
 
     componentDidMount() {
-        if(this.props.studentLogInfo && !this.props.transcript[0]) {
+        if(this.props.studentLogInfo && !this.props.transcript[0] ) {
             console.log('got transcript')
             this.props.getTranscript(this.props.studentLogInfo.userid)
         }
@@ -79,7 +79,9 @@ class Transcripts extends Component {
     render() {
         console.log(this.props.semTranscript)
         return (
-            <div className="ui container" style={{ textAlign: 'center', marginTop: '3em' }} >
+            <div>
+                <MenuBar />
+                <div className="ui container" style={{ textAlign: 'center', marginTop: '3em' }} >
                 <div style={{ marginBottom: '1em', fontSize: '50px' }} >Transcript</div>
                 <Form onSubmit={this.handleSubmit} >
                     <Dropdown
@@ -100,6 +102,7 @@ class Transcripts extends Component {
                         {this.renderList()}
                     </List>
                 </Segment.Group>
+            </div>
             </div>
         )
     }
