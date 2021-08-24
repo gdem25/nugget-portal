@@ -7,7 +7,7 @@ const options = [
     { key: 'SU', text: 'Summer', value: 'SUMMER22' },
   ]
 class SearchBox extends Component {
-    state={ term: 'FALL21', class: '', section: '' }
+    state={ term: '', class: '', section: '' }
 
     options1 = _.uniqBy(this.props.classOptions,'text')
 
@@ -46,6 +46,7 @@ class SearchBox extends Component {
                         name = 'term'
                         required
                         onChange={this.handlechange}
+                        value={this.state.term}
                         
                     />
                     <Form.Select

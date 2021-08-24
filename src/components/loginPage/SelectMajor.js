@@ -13,8 +13,7 @@ class SelectMajor extends Component {
 
   options = [
     { key: '1', text: 'Computer Science', value: 'CS' },
-    { key: '2', text: 'Electrical Engineering', value: 'EE' },
-    { key: '3', text: 'Computer Engineering', value: 'CE' },
+    { key: '2', text: 'Mechanical Engineering', value: 'ME' },
   ]
 
 
