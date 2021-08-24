@@ -18,7 +18,7 @@ class ChatRoom extends Component {
         setTimeout(() => {
             console.log('chat updated')
             this.props.getChatComments(this.props.match.params.id)
-        },7000)
+        },750)
     }
 
     handleChange = (event,{ value }) => {

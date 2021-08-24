@@ -27,20 +27,15 @@ export default (state = INITIAL_STATE, action) => {
             const name = action.payload.name
             const sectionid = action.payload.sectionid
             const filtered = _.filter(state.requiredClasses,{ name, sectionid })
-            const response = filtered.map(EClass => {
-                return {
-                    name: EClass.name,
-                    section: EClass.section,
-                    sectionid: EClass.sectionid,
-                    teacher: EClass.teacher,
-                    rate: EClass.rate,
-                    classid: EClass.classid,
-                    description: EClass.description,
-                    prereq: EClass.prereq,
-                    term: term
-                }
-            })
-            return { ...state, classesSearched: response }
+            if(!filtered[0]) {
+                return {...state, classesSearched: ['error'] }
+            }
+            else {
+                const added = filtered.map(each => {
+                    return {...each, term: term }
+                })
+                return { ...state, classesSearched: added }
+            }
         case ADD_TO_SHOPPING_CART:
             const classid = action.payload
             const chosen = _.filter(state.classesSearched, { classid } )

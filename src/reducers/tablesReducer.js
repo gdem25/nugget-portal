@@ -3,7 +3,8 @@ import {
     SET_SEARCH_TABLE_CHECKBOX, 
     SET_SEARCH_TABLE_CB_DISABLED,
     SET_SHOP_CART_CB,
-    SET_ENROLLED_CB
+    SET_ENROLLED_CB,
+    CLASS_SEARCH_ERROR
 } from '../types'
 
 
@@ -11,7 +12,8 @@ const INITIAL_STATE = {
     searchTableCBValue: '',
     searchTableCBDisabled: false,
     getShoppingCartCB: '',
-    getEnrolledCB: ''
+    getEnrolledCB: '',
+    classSearchError: 'set'
 }
 
 
@@ -25,6 +27,8 @@ export default (state=INITIAL_STATE, action) => {
             return { ...state, getShoppingCartCB: action.payload }
         case SET_ENROLLED_CB:
             return {...state, getEnrolledCB: action.payload }
+        case CLASS_SEARCH_ERROR:
+            return { ...state, classSearchError: action.payload }
         default:
             return state
     }

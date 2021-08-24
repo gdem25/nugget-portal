@@ -2,7 +2,8 @@ import {
     SET_SEARCH_TABLE_CHECKBOX, 
     SET_SEARCH_TABLE_CB_DISABLED,
     SET_SHOP_CART_CB,
-    SET_ENROLLED_CB
+    SET_ENROLLED_CB,
+    CLASS_SEARCH_ERROR
 } from '../types'
 
 
@@ -31,6 +32,13 @@ export const setShoppingCartCB = (value) => {
 export const setEnrolledCB = (value) => {
     return {
         type: SET_ENROLLED_CB,
+        payload: value
+    }
+}
+
+export const setClassSearchError = value => {
+    return {
+        type: CLASS_SEARCH_ERROR,
         payload: value
     }
 }

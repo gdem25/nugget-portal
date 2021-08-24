@@ -7,11 +7,18 @@ const options = [
     { key: 'SU', text: 'Summer', value: 'SUMMER22' },
   ]
 class SearchBox extends Component {
-    state={ term: '', class: '', section: '' }
+    state={ term: 'FALL21', class: '', section: '' }
 
     options1 = _.uniqBy(this.props.classOptions,'text')
 
     options2 = _.uniqBy(this.props.sectionOptions,'text')
+
+    componentDidUpdate() {
+        if(this.props.classesSearched[0] === 'error' && this.props.classSearchError === 'set'){
+            this.props.setClassSearchError(true)
+            console.log('error')
+        }
+    }
 
 
     handlechange = (e,{ name, value }) => {
@@ -23,7 +30,7 @@ class SearchBox extends Component {
         this.props.searchTableCheckboxValue('')
         this.props.setSearchTableCBDisabled(false)
         this.setState({ term: '', class: '', section: '' })
-
+        this.props.setClassSearchError('set')
     }
     render() {
         return (
@@ -39,7 +46,7 @@ class SearchBox extends Component {
                         name = 'term'
                         required
                         onChange={this.handlechange}
-                        value={this.state.term}
+                        
                     />
                     <Form.Select
                         label='Class'

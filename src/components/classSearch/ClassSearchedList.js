@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Table, Checkbox, Form, Button, Confirm } from 'semantic-ui-react'
+import { Table, Checkbox, Form, Button, Confirm, Message } from 'semantic-ui-react'
 class ClassSearchedList extends Component {
 
     state={ show: false }
@@ -58,7 +58,7 @@ class ClassSearchedList extends Component {
 
 
     render() {
-        if(this.props.classesSearched[0]) {
+        if( this.props.classesSearched[0] && this.props.classesSearched[0] !== 'error' ) {
             return(
                 <div className='ui container'>
                     <Form onSubmit={this.handleSubmit} >
@@ -106,7 +106,21 @@ class ClassSearchedList extends Component {
                     />
                 </div>
             )
-        }else {
+        }else if(this.props.classSearchError && this.props.classSearchError !== 'set' ) {
+            return(
+                <div className='ui container centered' >
+                  <Message 
+                    error
+                    compact
+                    header='Error Occured while searching Class.'
+                    list={['One of the fields might have been empty', 'The class section might have not matched the class name']}
+                    size='massive'
+                    onDismiss={() => this.props.setClassSearchError(false) }
+                  />
+                </div>
+            )
+        }
+        else {
             return(
                 <div>
                     <Button 
