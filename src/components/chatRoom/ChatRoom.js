@@ -2,23 +2,25 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button, Icon, Form, TextArea } from 'semantic-ui-react'
-import { getChatComments, postChatComment } from '../../actions/chatAction'
+import { getChatComments, postChatComment, deleteChatComments } from '../../actions/chatAction'
 import requireAuth from '../authentication/requireAuth'
 import ChatContent from './ChatContent'
 
 class ChatRoom extends Component {
 
-    state={ comment: '' }
+    state={ comment: ''}
+
 
     componentDidMount() {
         this.props.getChatComments(this.props.match.params.id)
+            this.id = setInterval(() => {
+                console.log('chat updated')
+                this.props.getChatComments(this.props.match.params.id)
+            },1000)
     }
 
-    componentDidUpdate() {
-        setTimeout(() => {
-            console.log('chat updated')
-            this.props.getChatComments(this.props.match.params.id)
-        },750)
+    componentWillUnmount() {
+        clearInterval(this.id)
     }
 
     handleChange = (event,{ value }) => {
@@ -45,6 +47,10 @@ class ChatRoom extends Component {
                         circular
                         inverted
                         color='blue'
+                        onClick={() => {
+                            clearInterval(this.id)
+                            this.props.deleteChatComments()
+                        } }
                         
                     >
                         <Icon name='angle double left'  />
@@ -77,5 +83,5 @@ const mapStateToProps = state => {
 }
 
 export default connect( mapStateToProps,
-     { getChatComments, postChatComment }
+     { getChatComments, postChatComment, deleteChatComments }
       )( requireAuth(ChatRoom) )

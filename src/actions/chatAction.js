@@ -1,5 +1,10 @@
 import ServerApi from '../api/ServerApi'
-import { GET_CHAT_ROOMS, GET_CHAT_COMMENT, POST_CHAT_COMMENT } from '../types'
+import { 
+    GET_CHAT_ROOMS, 
+    GET_CHAT_COMMENT, 
+    POST_CHAT_COMMENT, 
+    DELETE_CHAT_COMMENTS 
+} from '../types'
 
 
 
@@ -27,4 +32,11 @@ export const postChatComment = ( name, userid, image, sectionid, comment ) => as
         comment
     })
     dispatch({ type: POST_CHAT_COMMENT, payload: response.data })
+}
+
+
+export const deleteChatComments = () => {
+    return {
+        type: DELETE_CHAT_COMMENTS
+    }
 }
