@@ -1,25 +1,19 @@
-import React, { Component } from 'react'
 import ClassInfo from './ClassInfo'
-class ClassList extends Component {
 
-    renderClassInfo = () => {
-        return this.props.requiredClasses.map((info,index) => {
-            if(info.first) {
+
+const ClassList = ({ requiredClasses }) => {
+
+    const renderClassInfo = () => {
+        return requiredClasses.map((info) => {
                 return <ClassInfo  info={info} key={info.classid} />
-            }
-            else {
-                return null
-            }
         })
     }
 
-    render() {
-        return (
-            <div className="class-list " >
-                {this.renderClassInfo()}
-            </div>
-        )
-    }
+    return (
+        <div className="class-list " >
+            {renderClassInfo()}
+        </div>
+    )
 }
 
 export default ClassList

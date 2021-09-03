@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getTranscript, getSemesterTranscript } from '../../actions/adminAction'
-import { List, Segment, Dropdown, Button, Form } from 'semantic-ui-react'
+import { calculateGPA, calculateTotalGPA } from '../../actions/gpaAction'
+import { List, Segment, Dropdown, Button, Form, Grid } from 'semantic-ui-react'
 import MenuBar from '../MenuBar'
 import requireAuth from '../authentication/requireAuth'
 
@@ -14,14 +15,22 @@ const termOptions = [
 
 class Transcripts extends Component {
 
-    state={ term: '' }
+    state={ semTranscript: [], term: '' }
 
     componentDidMount() {
-        if(this.props.studentLogInfo && !this.props.transcript[0] ) {
-            console.log('got transcript')
-            this.props.getTranscript(this.props.studentLogInfo.userid)
+        const { transcript }  = this.props
+        let grade = []
+        let units = []
+        this.props.getSemesterTranscript('','')
+        this.props.calculateGPA([1],[0.0])
+        for( let i = 0; i<transcript.length; i++ ) {
+            grade.push(parseFloat(transcript[i].gpa))
+            units.push(parseInt(transcript[i].units))
         }
+        this.props.calculateTotalGPA(units,grade)
+        console.log('transcript mounted')
     }
+
 
     renderLabels = () => {
         const labels = ['Class', 'Units', 'Grade', 'Term']
@@ -43,7 +52,7 @@ class Transcripts extends Component {
 
 
     renderList = () => {
-        return this.props.semTranscript.map((each,index) => {
+        return this.state.semTranscript.map((each,index) => {
             return(
                 <List.Item key={index} style={{ display: 'flex',justifyContent: 'space-around' }}>
                     <List.Content style={{ paddingLeft: '20px' }}  floated='right' >
@@ -64,20 +73,32 @@ class Transcripts extends Component {
     }
 
     handleChange = (event,{ value }) => {
+        this.props.getSemesterTranscript(this.props.studentLogInfo.userid, value)
         this.setState({ term: value })
     }
 
+
+
     handleSubmit = () => {
         const { term } = this.state
-        if(term) {
-            this.props.getSemesterTranscript(term)
-            this.setState({ term: '' })
+        const { semTranscript } = this.props
+        let grade = []
+        let units = []
+        if(term && semTranscript[0] ) {
+            for(let i =0; i< semTranscript.length;i++) {
+                grade.push(parseFloat(semTranscript[i].gpa))
+                units.push(parseInt(semTranscript[i].units))
+            }
+            this.props.calculateGPA(units,grade)
+            this.setState({ semTranscript, term: '' })
+        }else {
+            this.setState({ semTranscript: [], term: '' })
+            this.props.calculateGPA([1],[0.0])
         }
     }
 
 
     render() {
-        console.log(this.props.semTranscript)
         return (
             <div>
                 <MenuBar />
@@ -103,6 +124,20 @@ class Transcripts extends Component {
                     </List>
                 </Segment.Group>
             </div>
+            <Grid>
+                <Grid.Column width={8} >
+                    <div style={{ marginTop: '1em', fontSize: '50px' }} className='centered' >
+                        Semester GPA
+                        <div style={{ marginTop: '1em' }} >{this.props.semesterGpa}</div>
+                    </div>
+                </Grid.Column>
+                <Grid.Column width={8} >
+                    <div style={{ marginTop: '1em', fontSize: '50px' }} className='centered' >
+                        Cumulative GPA
+                        <div style={{ marginTop: '1em' }} >{this.props.totalGpa}</div>
+                    </div>
+                </Grid.Column>
+            </Grid>
             </div>
         )
     }
@@ -112,8 +147,15 @@ const mapStateToProps = state => {
     return{
         transcript: state.admin.transcript,
         studentLogInfo: state.auth.studentLogInfo,
-        semTranscript: state.admin.semTranscript
+        semTranscript: state.admin.semTranscript,
+        semesterGpa: state.gpa.semesterGpa,
+        totalGpa: state.gpa.totalGpa
     }
 }
 
-export default connect(mapStateToProps,{ getTranscript, getSemesterTranscript })(requireAuth(Transcripts))
+export default connect(mapStateToProps,{ 
+    getTranscript, 
+    getSemesterTranscript,
+    calculateGPA,
+    calculateTotalGPA
+})(requireAuth(Transcripts))

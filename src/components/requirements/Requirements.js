@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import _ from 'lodash'
 import MenuBar from '../MenuBar'
 import ClassList from './ClassList'
 import requireAuth from '../authentication/requireAuth'
@@ -8,8 +7,36 @@ import '../../css/requirements.css'
 class Requirements extends Component {
     state={ requiredClasses: [] }
 
+    // componentDidMount() {
+    //     const filtered = _.differenceBy(this.props.requiredClasses,this.props.transcript,'sectionid')
+    //     this.setState({ requiredClasses: filtered })
+    // }
+
     componentDidMount() {
-        const filtered = _.differenceBy(this.props.requiredClasses,this.props.transcript,'sectionid')
+        const { requiredClasses, transcript } = this.props
+        let temp =[]
+        for( let i =0; i<requiredClasses.length; i++ ){
+            temp[requiredClasses[i].sectionid] = true
+        }
+        for(let i =0; i<transcript.length;i++) {
+            // checking in case the class has been taken more than once
+            if(temp[transcript[i].sectionid]) {
+                temp[transcript[i].sectionid] = false
+            }
+        }
+        const check = requiredClasses.map( eClass => {
+            if(!temp[eClass.sectionid]) {
+                return {...eClass, added: true}
+            }
+            else {
+                return {...eClass, added:false}
+            }
+        })
+
+        const filtered = check.filter(eClass => {
+            return eClass.first
+        })
+
         this.setState({ requiredClasses: filtered })
     }
 

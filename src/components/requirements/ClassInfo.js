@@ -1,8 +1,23 @@
 import React, { Component } from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 class ClassInfo extends Component {
+
+    renderIfClassTaken = (added) => {
+        if(added) {
+            return <Card.Content extra className='centered' >
+                <Icon name='chess queen' />
+                Class has been taken
+            </Card.Content>
+        }else {
+            return <Card.Content extra className='centered' >
+                <Icon name='paper plane outline'  />
+                Class not Yet Taken
+            </Card.Content>
+        }
+    }
+
     render() {
-        const { name, section, description } = this.props.info
+        const { name, section, description, added } = this.props.info
         return (
             <div  >
                 <Card raised style={{ height: "inherit", width: "inherit", minHeight: "150px"}} >
@@ -15,6 +30,7 @@ class ClassInfo extends Component {
                             <div>{description}</div>
                         </Card.Description>
                     </Card.Content>
+                    {this.renderIfClassTaken(added)}
                 </Card>
             </div>
         )

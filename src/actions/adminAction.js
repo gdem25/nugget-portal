@@ -43,9 +43,9 @@ export const getTranscript = userid => async dispatch => {
     dispatch({ type: GET_TRANSCRIPT, payload: response.data })
 }
 
-export const getSemesterTranscript = term => {
-    return{
-        type: GET_SEMESTER_TRANSCRIPT,
-        payload: term
-    }
+export const getSemesterTranscript = (userid,term) => async dispatch => {
+    const response = await ServerApi.get('/semtranscript', {
+        headers: { userid, term }
+    })
+    dispatch({ type: GET_SEMESTER_TRANSCRIPT, payload: response.data })
 }

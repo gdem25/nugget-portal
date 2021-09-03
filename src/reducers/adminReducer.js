@@ -40,10 +40,10 @@ export default ( state=INITIAL_STATE, action ) => {
                  transcript: [ ...state.transcript, action.payload ]
                  }
         case GET_SEMESTER_TRANSCRIPT:
-            const semester = _.filter( state.transcript ,each => {
-                return each.term === action.payload
-            })
-            return { ...state, semTranscript: semester }
+            // const semester = _.filter( state.transcript ,each => {
+            //     return each.term === action.payload
+            // })
+            return { ...state, semTranscript: action.payload }
         default:
             return state
     }
